@@ -64,10 +64,10 @@ variable "vpc_security_group_ids" {
 }
 
 variable "skip_final_snapshot" {
-  description = "(Optional, Default:false) Determines whether a final DB snapshot is created before the DB instance is deleted."
+  description = "(Optional, Default:true) Determines whether a final DB snapshot is created before the DB instance is deleted."
   type        = bool
   nullable    = false
-  default     = false
+  default     = true
 }
 
 variable "tags" {
