@@ -1,6 +1,8 @@
 <!-- BEGIN_TF_DOCS -->
 # terraform-aws-grafana
 
+Terraform module to deploy Grafana on ECS.
+
 ## Requirements
 
 | Name | Version |
