@@ -424,7 +424,7 @@ variable "rds_db_parameter_group_family" {
 }
 
 variable "rds_db_parameter_group_parameters" {
-  description = "(Optional, Default:[]) The DB parameters to apply."
+  description = "(Optional) The DB parameters to apply."
   type = list(
     object({
       name         = string
