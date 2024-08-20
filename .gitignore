@@ -45,3 +45,6 @@ go.sum
 
 # VSCode Configurations
 .vscode
+
+# Todo
+.todo
