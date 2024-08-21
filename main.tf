@@ -249,11 +249,13 @@ module "grafana_backend_rds" {
   storage_type      = local.rds_storage_type
   allocated_storage = var.rds_allocated_storage
 
-  engine                 = local.rds_engine
-  engine_version         = var.rds_postgres_engine_version
-  vpc_security_group_ids = [module.grafana_backend_rds_security_group.security_group_id]
-  db_name                = local.rds_db_name
-  username               = var.rds_username
+  engine         = local.rds_engine
+  engine_version = var.rds_postgres_engine_version
+  vpc_security_group_ids = [
+    module.grafana_backend_rds_security_group.security_group_id
+  ]
+  db_name  = local.rds_db_name
+  username = var.rds_username
 
   db_subnet_group_name        = var.rds_db_subnet_group_name
   db_subnet_group_description = var.rds_db_subnet_group_description
