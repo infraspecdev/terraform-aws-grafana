@@ -49,13 +49,6 @@ variable "username" {
   default     = "admin_user"
 }
 
-variable "manage_master_user_password" {
-  description = "(Optional, Default:true) Set to true to allow RDS to manage the master user password in Secrets Manager."
-  type        = bool
-  nullable    = false
-  default     = true
-}
-
 variable "vpc_security_group_ids" {
   description = "(Optional) List of VPC security groups to associate."
   type        = list(string)

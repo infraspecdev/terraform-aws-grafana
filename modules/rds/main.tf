@@ -14,7 +14,7 @@ resource "aws_db_instance" "this" {
 
   db_name                     = var.db_name
   username                    = var.username
-  manage_master_user_password = var.manage_master_user_password
+  manage_master_user_password = true
 
   skip_final_snapshot = var.skip_final_snapshot
 
