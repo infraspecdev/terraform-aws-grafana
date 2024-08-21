@@ -1,7 +1,20 @@
 <!-- BEGIN_TF_DOCS -->
 # iam-role
 
-This sub-module creates IAM role and attaches appropriate IAM policies to the IAM role.
+This sub-module creates an IAM role and attaches appropriate IAM policies to the IAM role.
+
+## Presets
+
+### IAM Role
+
+- The `name` is marked as a required variable, which sets the name of the IAM role.
+
+## Notes
+
+- The IAM policies defined under `iam_policies` are created and automatically attached to the IAM role.
+- The ARNs of the IAM policies specified under the `iam_policy_attachments` are automatically attached to the IAM role. This is useful in cases where you are referencing:
+  - Amazon-managed IAM Policies, or
+  - Self-managed IAM Policies
 
 ## Requirements
 

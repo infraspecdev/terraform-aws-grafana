@@ -1,7 +1,23 @@
 <!-- BEGIN_TF_DOCS -->
 # rds
 
-This sub-module creates an RDS instance.
+This sub-module creates:
+- RDS instance
+- DB Subnet Group, and
+- DB Parameter Group
+
+## Presets
+
+### DB Instance
+
+- The `storage_type` is set to "gp2" (General Purpose SSD) as the default choice (instead of "io1", which requires Iops), and can be overridden to use any other Storage type.
+- The `db_name` is set to "default\_db" as the default database name, and can be overridden.
+- The `username` is set to "admin\_user" as the default master user's username, and can be overridden.
+- The `skip_final_snapshot` is set to `true` as the default choice (which skips the creation of DB snapshots when the RDS instance is destroyed), and can be overridden to be `false`.
+
+## Notes
+
+- The `family` attribute under DB Parameter Group is marked as required.
 
 ## Requirements
 
