@@ -1,9 +1,13 @@
-output "certificate_arn" {
-  description = "ARN of the base domain certificate"
-  value       = data.aws_acm_certificate.domain.arn
+################################################################################
+# Route53 Record
+################################################################################
+
+output "id" {
+  description = "Identifier of the Route53 Record"
+  value       = aws_route53_record.this.id
 }
 
 output "zone_id" {
   description = "ID of the Route 53 zone"
-  value       = data.aws_route53_zone.zone.zone_id
+  value       = data.aws_route53_zone.base_domain.zone_id
 }
