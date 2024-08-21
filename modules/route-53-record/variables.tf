@@ -2,6 +2,12 @@
 # Route53 Record
 ################################################################################
 
+variable "zone_id" {
+  description = "(Required) The ID of the hosted zone to contain this record."
+  type        = string
+  nullable    = false
+}
+
 variable "domain" {
   description = "(Required) Domain name for which the certificate should be issued."
   type        = string

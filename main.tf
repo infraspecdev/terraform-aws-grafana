@@ -377,6 +377,7 @@ module "grafana_backend_rds_security_group" {
 module "grafana_dns_record" {
   source = "./modules/route-53-record"
 
+  zone_id      = var.acm_record_zone_id
   domain       = var.acm_grafana_domain_name
   alb_dns_name = module.grafana_ecs_deployment.alb_dns_name
   alb_zone_id  = module.grafana_ecs_deployment.alb_zone_id
