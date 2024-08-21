@@ -3,6 +3,10 @@
 
 Terraform module to deploy Grafana on ECS.
 
+## Architecture Diagram
+
+![Grafana Architecture Diagram](https://github.com/infraspecdev/terraform-aws-grafana/raw/main/diagrams/grafana-architecture.png)
+
 ## Requirements
 
 | Name | Version |
