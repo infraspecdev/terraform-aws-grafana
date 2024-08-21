@@ -43,8 +43,9 @@ go.sum
 
 .DS_Store
 
-# VSCode Configurations
+# Editor Configurations
 .vscode
+.idea
 
 # Todo
 .todo
