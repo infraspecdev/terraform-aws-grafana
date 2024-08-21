@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "ap-south-1"
-}
+mock_provider "aws" {}
 
 ################################################################################
 # Route53 Record
