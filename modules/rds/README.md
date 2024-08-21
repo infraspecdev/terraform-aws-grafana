@@ -47,7 +47,6 @@ No modules.
 | <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | (Optional, Default:null) The engine version to use. | `string` | `null` | no |
 | <a name="input_identifier"></a> [identifier](#input\_identifier) | (Required) The name of the RDS instance. | `string` | n/a | yes |
 | <a name="input_instance_class"></a> [instance\_class](#input\_instance\_class) | (Required) The instance type of the RDS instance. | `string` | n/a | yes |
-| <a name="input_manage_master_user_password"></a> [manage\_master\_user\_password](#input\_manage\_master\_user\_password) | (Optional, Default:true) Set to true to allow RDS to manage the master user password in Secrets Manager. | `bool` | `true` | no |
 | <a name="input_skip_final_snapshot"></a> [skip\_final\_snapshot](#input\_skip\_final\_snapshot) | (Optional, Default:true) Determines whether a final DB snapshot is created before the DB instance is deleted. | `bool` | `true` | no |
 | <a name="input_storage_type"></a> [storage\_type](#input\_storage\_type) | (Optional, Default:"gp2") One of "standard", "gp2", "gp3" or "io1". | `string` | `"gp2"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to assign to the resource. | `map(string)` | `{}` | no |
