@@ -18,6 +18,22 @@ locals {
     "GF_DATABASE_PASSWORD" = "${module.grafana_backend_rds.master_user_secret.secret_arn}:password::"
   }
 
+  #security groups
+  ecs_service_security_group_name                = "grafana-service"
+  ecs_service_security_group_description         = "Defines ingress and egress rules for ECS Grafana Services"
+  ecs_service_security_group_ingress_description = "Allow ingress on Grafana port from ALB"
+  ecs_service_security_group_egress_description  = "Allow all egress"
+
+  grafana_alb_security_group_name                = "grafana-alb"
+  grafana_alb_security_group_description         = "Defines ingress and egress rules for Grafana ALB."
+  grafana_alb_security_group_ingress_description = "Allow all ingress"
+  grafana_alb_security_group_egress_description  = "Allow all egress on Grafana port within VPC"
+
+  grafana_backend_rds_security_group_name                = "grafana-backend"
+  grafana_backend_rds_security_group_description         = "Defines ingress and egress rules for Grafana RDS Backend instance."
+  grafana_backend_rds_security_group_ingress_description = "Allow ingress on Postgres port from ECS Grafana Services"
+  grafana_backend_rds_security_group_egress_description  = "Allow all egress within VPC"
+
   # ALB Target Groups
   grafana_alb_target_group_key_name = "grafana-tg"
 
@@ -287,13 +303,13 @@ module "ecs_service_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 5.1.2"
 
-  name        = "grafana-service"
-  description = "Defines ingress and egress rules for ECS Grafana Services"
+  name        = local.ecs_service_security_group_name
+  description = local.ecs_service_security_group_description
   vpc_id      = var.vpc_id
 
   ingress_with_source_security_group_id = [
     {
-      description              = "Allow ingress on Grafana port from ALB"
+      description              = local.ecs_service_security_group_ingress_description
       from_port                = local.grafana_port
       to_port                  = local.grafana_port
       protocol                 = "tcp"
@@ -303,7 +319,7 @@ module "ecs_service_security_group" {
 
   egress_with_cidr_blocks = [
     {
-      description = "Allow all egress"
+      description = local.ecs_service_security_group_egress_description
       from_port   = 0
       to_port     = 0
       protocol    = "-1"
@@ -316,13 +332,13 @@ module "grafana_alb_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 5.1.2"
 
-  name        = "grafana-alb"
-  description = "Defines ingress and egress rules for Grafana ALB."
+  name        = local.ecs_service_security_group_name
+  description = local.ecs_service_security_group_description
   vpc_id      = var.vpc_id
 
   ingress_with_cidr_blocks = [
     {
-      description = "Allow all ingress"
+      description = local.grafana_alb_security_group_ingress_description
       from_port   = 0
       to_port     = 0
       protocol    = "-1"
@@ -332,7 +348,7 @@ module "grafana_alb_security_group" {
 
   egress_with_cidr_blocks = [
     {
-      description = "Allow all egress on Grafana port within VPC"
+      description = local.grafana_alb_security_group_egress_description
       from_port   = local.grafana_port
       to_port     = local.grafana_port
       protocol    = "tcp"
@@ -345,13 +361,13 @@ module "grafana_backend_rds_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 5.1.2"
 
-  name        = "grafana-backend"
-  description = "Defines ingress and egress rules for Grafana RDS Backend instance."
+  name        = local.grafana_backend_rds_security_group_name
+  description = local.grafana_backend_rds_security_group_description
   vpc_id      = var.vpc_id
 
   ingress_with_source_security_group_id = [
     {
-      description              = "Allow ingress on Postgres port from ECS Grafana Services"
+      description              = local.grafana_backend_rds_security_group_ingress_description
       from_port                = local.rds_port
       to_port                  = local.rds_port
       protocol                 = "tcp"
@@ -361,7 +377,7 @@ module "grafana_backend_rds_security_group" {
 
   egress_with_cidr_blocks = [
     {
-      description = "Allow all egress within VPC"
+      description = local.grafana_backend_rds_security_group_egress_description
       from_port   = 0
       to_port     = 0
       protocol    = "-1"
