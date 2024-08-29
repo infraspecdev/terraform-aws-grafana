@@ -332,8 +332,8 @@ module "grafana_alb_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 5.1.2"
 
-  name        = local.ecs_service_security_group_name
-  description = local.ecs_service_security_group_description
+  name        = local.grafana_alb_security_group_name
+  description = local.grafana_alb_security_group_description
   vpc_id      = var.vpc_id
 
   ingress_with_cidr_blocks = [
