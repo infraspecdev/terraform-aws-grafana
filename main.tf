@@ -301,7 +301,7 @@ data "aws_vpc" "this" {
 
 module "ecs_service_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.1.2"
+  version = "~> 5.2.0"
 
   name        = local.ecs_service_security_group_name
   description = local.ecs_service_security_group_description
@@ -330,7 +330,7 @@ module "ecs_service_security_group" {
 
 module "grafana_alb_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.1.2"
+  version = "~> 5.2.0"
 
   name        = local.grafana_alb_security_group_name
   description = local.grafana_alb_security_group_description
@@ -359,7 +359,7 @@ module "grafana_alb_security_group" {
 
 module "grafana_backend_rds_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.1.2"
+  version = "~> 5.2.0"
 
   name        = local.grafana_backend_rds_security_group_name
   description = local.grafana_backend_rds_security_group_description
