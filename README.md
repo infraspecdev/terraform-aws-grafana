@@ -129,3 +129,4 @@ Terraform module to deploy Grafana on ECS.
 | <a name="output_s3_bucket_arn"></a> [s3\_bucket\_arn](#output\_s3\_bucket\_arn) | ARN of the bucket where the Grafana ALB logs will be stored. |
 | <a name="output_s3_bucket_id"></a> [s3\_bucket\_id](#output\_s3\_bucket\_id) | Name of the bucket where the Grafana ALB logs will be stored. |
 <!-- END_TF_DOCS -->
+a
